@@ -42,8 +42,6 @@ router.post('/signup', (req, res, next) => {
 })
 
 
-
-
 router.post('/login', (req, res, next) => {
 
     console.log('secretoo', process.env.TOKEN_SECRET)

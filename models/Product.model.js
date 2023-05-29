@@ -25,17 +25,21 @@ const productSchema = new Schema(
         },
         reviews: [{
             rate: Number,
-            comment: String
+            comment: String,
+            owner: {
+                type: Schema.Types.ObjectId,
+                ref: 'User'
+            }
         }],
 
         //SHIPMENT(envio de producto)
 
         //interesados
 
-        // owner: {
-        //     type: Schema.Types.ObjectId,
-        //     ref: 'User'
-        // }
+        owner: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }
     },
     {
         timestamps: true
