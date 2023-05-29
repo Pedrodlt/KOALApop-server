@@ -30,10 +30,6 @@ const userSchema = new Schema(
       type: String,
       required: [true, 'Password is required.']
     },
-    products: [{
-      type: Schema.Types.ObjectId,
-      ref: 'Product'
-    }],
     following: [{
       type: Schema.Types.ObjectId,
       ref: 'User'
