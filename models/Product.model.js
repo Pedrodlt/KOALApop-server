@@ -4,24 +4,25 @@ const productSchema = new Schema(
     {
         title: {
             type: String,
-            required: [true, 'El nombre es obligatorio']
+            required: [true, 'Title is mandatory']
         },
         description: {
             type: String,
-            required: [true, 'La descripción es obligatoria'],
-            minlength: [20, 'La descripción debe tener min. 20 caracteres']
+            required: [true, 'Add description'],
+            minlength: [20, 'Description must be at least 20 characters']
         },
         category: {
             type: String,
-            required: [true, 'La Categoría es obligatoria'],
+            required: [true, 'Add category'],
         },
         price: {
             type: Number,
-            required: [true, 'El precio es obligatorio'],
+            required: [true, 'Price is mandatory'],
         },
+        // array en imagen
         image: {
             type: String,
-            required: [true, 'La imagen es obligatoria'],
+            required: [true, 'Image must be added'],
         },
         reviews: [{
             rate: Number,

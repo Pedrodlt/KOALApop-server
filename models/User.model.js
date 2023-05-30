@@ -4,12 +4,12 @@ const userSchema = new Schema(
   {
     username: {
       type: String,
-      required: [true, 'El nombre de usuario es obligatorio'],
-      minlength: [3, 'El nombre de usuario es demasiado corto']
+      required: [true, 'Username is mandatory'],
+      minlength: [3, 'Username is too short']
     },
     avatar: {
       type: String,
-      required: [true, 'El avatar de usuario es obligatorio'],
+      required: [true, 'Avatar is mandatory'],
       default: 'https://i.stack.imgur.com/l60Hf.png'
 
     },
@@ -21,14 +21,14 @@ const userSchema = new Schema(
     },
     email: {
       type: String,
-      required: [true, 'Email is required.'],
+      required: [true, 'Email is mandatory.'],
       unique: true,
       lowercase: true,
       trim: true
     },
     password: {
       type: String,
-      required: [true, 'Password is required.']
+      required: [true, 'Password is mandatory.']
     },
     following: [{
       type: Schema.Types.ObjectId,
