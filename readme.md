@@ -15,7 +15,6 @@ Base URL/users
 HTTP METHOD   | URL PATH       | DESCRIPTION         | 
 ------------- | -------------  | ------------        | 
 GET           | `/getAllUsers` | USERS LISTPAGE      |
-POST          | `/saveUser`    | USERS CREATEPG      |
 POST          | `/:id/products`| USER PRODUCTS LIST  |
 GET           | `/:id`         | USERS PROF          |
 PUT           | `/:id/edit`    | USERS EDIT PROF     |
