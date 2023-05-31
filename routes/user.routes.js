@@ -4,7 +4,7 @@ const { getAllUsers, getOneUser, editUser, deleteUser } = require("../controller
 
 router.get("/getAllUsers", getAllUsers)
 router.get("/getOneUser/:user_id", getOneUser)
-router.put("/editUser", editUser)
-router.delete("/deleteUser", deleteUser)
+router.put("/editUser/:user_id", editUser)
+router.delete("/deleteUser/:user_id", deleteUser)
 
 module.exports = router
