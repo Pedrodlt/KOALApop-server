@@ -25,20 +25,25 @@ const getOneUser = (req, res, next) => {
 const editUser = (req, res, next) => {
 
     const { user_id } = req.params
-    const { username, email } = req.body
+    const { username, email, avatar } = req.body // OJO AVATAR
 
-    if (req.file) {
-        const { path: avatar } = req.file
-        User
-            .findByIdAndUpdate(user_id, { username, email, avatar })
-            .then(response => res.json(response))
-            .catch(err => next(err))
-    } else {
-        User
-            .findByIdAndUpdate(user_id, { username, email, })
-            .then(response => res.json(response))
-            .catch(err => next(err))
-    }
+    User
+        .findByIdAndUpdate(user_id, { username, email, avatar })
+        .then(response => res.json(response))
+        .catch(err => next(err))
+
+    // if (req.file) {
+    //     const { path: avatar } = req.file
+    //     User
+    //         .findByIdAndUpdate(user_id, { username, email, avatar })
+    //         .then(response => res.json(response))
+    //         .catch(err => next(err))
+    // } else {
+    //     User
+    //         .findByIdAndUpdate(user_id, { username, email, })
+    //         .then(response => res.json(response))
+    //         .catch(err => next(err))
+    // }
 }
 
 // USER DELETE

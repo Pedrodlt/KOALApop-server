@@ -38,7 +38,7 @@ const saveProduct = (req, res, next) => {
 const editProduct = (req, res, next) => {
 
     const { product_id } = req.params
-    const { title, description, category, price } = req.body
+    const { title, description, category, price, image } = req.body  // OJO IMAGE
 
     Product
         .findByIdAndUpdate(product_id, { title, description, category, price, image })

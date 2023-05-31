@@ -6,7 +6,7 @@ const { isAuthenticated } = require("../middlewares/verifyToken.middleware")
 router.get("/getAllProducts", getAllProducts)
 router.get("/getOneProduct/:product_id", getOneProduct)
 router.post("/saveProduct", isAuthenticated, saveProduct)
-router.put("/editProduct", isAuthenticated, editProduct)
-router.delete("/deleteProduct", deleteProduct)
+router.put("/editProduct/:product_id", isAuthenticated, editProduct)
+router.delete("/deleteProduct/:product_id", deleteProduct)
 
 module.exports = router

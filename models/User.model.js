@@ -30,7 +30,11 @@ const userSchema = new Schema(
       type: String,
       required: [true, 'Password is mandatory.']
     },
-    following: [{
+    followingProduct: [{
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    }],
+    followingUser: [{
       type: Schema.Types.ObjectId,
       ref: 'User'
     }]
