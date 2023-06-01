@@ -32,10 +32,13 @@ const productSchema = new Schema(
                 ref: 'User'
             }
         }],
+        buyerInfo: [{
+            fullName: String,
+            address: String,
+            email: String
+        }],
 
         //SHIPMENT(envio de producto)
-
-        //interesados
 
         owner: {
             type: Schema.Types.ObjectId,
