@@ -5,7 +5,8 @@ const getAllUsers = (req, res, next) => {
 
     User
         .find()
-        .then(response => setTimeout(() => res.json(response), 1000))
+        // TODO: SELECT 
+        .then(response => res.json(response))
         .catch(err => next(err))
 }
 

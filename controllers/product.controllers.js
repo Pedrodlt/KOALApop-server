@@ -7,7 +7,7 @@ const getAllProducts = (req, res, next) => {
         .find()
         .select({ title: 1, image: 1, owner: 1 })
         .sort({ title: 1 })
-        .then(response => setTimeout(() => res.json(response), 1000))
+        .then(response => res.json(response))
         .catch(err => next(err))
 }
 
@@ -66,7 +66,8 @@ const deleteProduct = (req, res, next) => {
 
     Product
         .findByIdAndDelete(product_id)
-        .then(response => res.json(response))
+        .then(() => res.sendStatus(204))
+        // TODO: REVISAR OTROS CASOS RESOLUVLES CON EL ENVÍO DE UN ESTADO
         .catch(err => next(err))
 }
 
