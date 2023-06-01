@@ -38,10 +38,10 @@ const saveProduct = (req, res, next) => {
 const editProduct = (req, res, next) => {
 
     const { product_id } = req.params
-    const { title, description, category, price, image } = req.body  // OJO IMAGE
+    const { title, description, category, price, image, buyerInfo } = req.body  // OJO IMAGE
 
     Product
-        .findByIdAndUpdate(product_id, { title, description, category, price, image })
+        .findByIdAndUpdate(product_id, { title, description, category, price, image, buyerInfo })
         .then(response => res.json(response))
         .catch(err => next(err))
 

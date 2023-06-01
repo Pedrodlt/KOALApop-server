@@ -32,11 +32,11 @@ const productSchema = new Schema(
                 ref: 'User'
             }
         }],
-        buyerInfo: [{
+        buyerInfo: {
             fullName: String,
             address: String,
             email: String
-        }],
+        },
 
         //SHIPMENT(envio de producto)
 
