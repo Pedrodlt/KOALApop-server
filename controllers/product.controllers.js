@@ -1,4 +1,5 @@
 const Product = require('../models/Product.model')
+const User = require('./../models/User.model')
 
 // PRODUCT LIST
 const getAllProducts = (req, res, next) => {
@@ -59,6 +60,29 @@ const editProduct = (req, res, next) => {
     // }
 }
 
+
+const buyProduct = (req, res, next) => {
+
+    const { product_id } = req.params
+    // const { buyerInfo } = req.body
+    const { fullName, email, address } = req.body;
+    const { _id: user_id } = req.payload
+
+    const promises = [
+        Product.findByIdAndUpdate(product_id, { buyerInfo: { fullName, email, address } }, /* { buyerInfo }, */ { new: true }),
+        User.findByIdAndUpdate(user_id, { $addToSet: { purchasedProduct: product_id } }, { new: true })
+    ]
+
+    Promise
+        .all(promises)
+        .then(responses => {
+            console.log('EL PRDUCTO ACTUALIZADO:', responses[0])
+            console.log('EL USUARIO ACTUALIZADO:', responses[1])
+        })
+        .catch(err => next(err))
+
+}
+
 // PRODUCT DELETE
 const deleteProduct = (req, res, next) => {
 
@@ -76,5 +100,6 @@ module.exports = {
     getOneProduct,
     saveProduct,
     editProduct,
-    deleteProduct
+    deleteProduct,
+    buyProduct
 }

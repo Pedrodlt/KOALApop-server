@@ -37,6 +37,10 @@ const userSchema = new Schema(
     followingUser: [{
       type: Schema.Types.ObjectId,
       ref: 'User'
+    }],
+    purchasedProduct: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Product'
     }]
   },
   {
