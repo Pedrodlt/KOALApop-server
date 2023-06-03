@@ -17,6 +17,7 @@ const getOneUser = (req, res, next) => {
 
     User
         .findById(user_id)
+        .populate('purchasedProduct')
         .then(response => res.json(response))
         .catch(err => next(err))
 }
