@@ -20,10 +20,10 @@ const productSchema = new Schema(
             required: [true, 'Price is mandatory'],
         },
         // array en imagen
-        image: {
+        image: [{
             type: String,
             required: [true, 'Image must be added'],
-        },
+        }],
         reviews: [{
             rate: Number,
             comment: String,
