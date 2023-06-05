@@ -6,8 +6,9 @@ const getAllProducts = (req, res, next) => {
 
     Product
         .find()
-        .select({ title: 1, image: 1, owner: 1 })
+        // .select({ title: 1, image: 1, owner: 1 })
         .sort({ title: 1 })
+        .populate('owner')
         .then(response => res.json(response))
         .catch(err => next(err))
 }
