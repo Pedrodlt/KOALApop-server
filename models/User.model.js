@@ -41,7 +41,11 @@ const userSchema = new Schema(
     purchasedProduct: [{
       type: Schema.Types.ObjectId,
       ref: 'Product'
-    }]
+    }],
+    funds: {
+      type: Number,
+      default: 0
+    }
   },
   {
     timestamps: true
