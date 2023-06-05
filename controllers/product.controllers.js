@@ -80,6 +80,7 @@ const buyProduct = (req, res, next) => {
         .then(responses => {
             console.log('EL PRDUCTO ACTUALIZADO:', responses[0])
             console.log('EL USUARIO ACTUALIZADO:', responses[1])
+            res.json(responses)
         })
         .catch(err => next(err))
 
