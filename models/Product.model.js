@@ -37,6 +37,10 @@ const productSchema = new Schema(
             address: String,
             email: String
         },
+        bought: {
+            type: Boolean,
+            default: false
+        },
 
         //SHIPMENT(envio de producto)
 

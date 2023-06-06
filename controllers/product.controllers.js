@@ -69,9 +69,8 @@ const buyProduct = (req, res, next) => {
     const { fullName, email, address } = req.body;
     const { _id: user_id } = req.payload
 
-
     const promises = [
-        Product.findByIdAndUpdate(product_id, { buyerInfo: { fullName, email, address } }, /* { buyerInfo }, */ { new: true }),
+        Product.findByIdAndUpdate(product_id, { buyerInfo: { fullName, email, address }, bought: true }, /* { buyerInfo }, */ { new: true }),
         User.findByIdAndUpdate(user_id, { $addToSet: { purchasedProduct: product_id } }, { new: true })
     ]
 
