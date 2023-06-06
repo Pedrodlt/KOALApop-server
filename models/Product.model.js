@@ -41,9 +41,10 @@ const productSchema = new Schema(
             type: Boolean,
             default: false
         },
-
-        //SHIPMENT(envio de producto)
-
+        bids: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Bid'
+        }],
         owner: {
             type: Schema.Types.ObjectId,
             ref: 'User'

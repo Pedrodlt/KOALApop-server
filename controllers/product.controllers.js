@@ -1,4 +1,5 @@
 const Product = require('../models/Product.model')
+const Bid = require('./../models/Bid.model')
 const User = require('./../models/User.model')
 
 // PRODUCT LIST
@@ -20,6 +21,15 @@ const getOneProduct = (req, res, next) => {
 
     Product
         .findById(product_id)
+        .populate('owner')
+        .populate({
+            path: 'bids',
+            model: 'Bid',
+            populate: {
+                path: 'owner',
+                model: 'User'
+            }
+        })
         .then(response => res.json(response))
         .catch(err => next(err))
 }
