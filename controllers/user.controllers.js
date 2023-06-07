@@ -27,10 +27,10 @@ const getOneUser = (req, res, next) => {
 const editUser = (req, res, next) => {
 
     const { user_id } = req.params
-    const { username, email, avatar } = req.body // OJO AVATAR
+    const { username, email, avatar, funds } = req.body // OJO AVATAR
 
     User
-        .findByIdAndUpdate(user_id, { username, email, avatar })
+        .findByIdAndUpdate(user_id, { username, email, avatar, funds })
         .then(response => res.json(response))
         .catch(err => next(err))
 
