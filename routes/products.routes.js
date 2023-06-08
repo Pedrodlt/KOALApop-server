@@ -1,9 +1,10 @@
 const router = require("express").Router()
 
-const { getAllProducts, getOneProduct, saveProduct, editProduct, deleteProduct, buyProduct, acceptBid, denyBid } = require("../controllers/product.controllers")
+const { getAllProducts, getAllProductsSorted, getOneProduct, saveProduct, editProduct, deleteProduct, buyProduct, acceptBid, denyBid } = require("../controllers/product.controllers")
 const { isAuthenticated } = require("../middlewares/verifyToken.middleware")
-
+getAllProductsSorted
 router.get("/getAllProducts", getAllProducts)
+router.get("/getAllProductsSorted", getAllProductsSorted)
 router.get("/getOneProduct/:product_id", getOneProduct)
 router.post("/saveProduct", isAuthenticated, saveProduct)
 router.put("/editProduct/:product_id", isAuthenticated, editProduct)

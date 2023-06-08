@@ -13,6 +13,17 @@ const getAllProducts = (req, res, next) => {
         .catch(err => next(err))
 }
 
+// PRODUCT clothing LIST
+const getAllProductsSorted = (req, res, next) => {
+
+    Product
+        .find()
+        .sort({ category: 1 })
+        .populate('owner')
+        .then(response => res.json(response))
+        .catch(err => next(err))
+}
+
 // PRODUCT DETAIL
 const getOneProduct = (req, res, next) => {
 
@@ -104,6 +115,18 @@ const denyBid = (req, res, next) => {
 
     Product
         .findByIdAndUpdate(product_id, { $pull: { bids: bidID } }, { new: true })
+        .populate('owner')
+        .populate({
+            path: 'bids',
+            model: 'Bid',
+            populate: {
+                path: 'owner',
+                model: 'User'
+            },
+            options: {
+                sort: { createdAt: 'desc' },
+            },
+        })
         .then(responses => {
             res.json(responses)
         })
@@ -149,6 +172,7 @@ const deleteProduct = (req, res, next) => {
 
 module.exports = {
     getAllProducts,
+    getAllProductsSorted,
     getOneProduct,
     saveProduct,
     editProduct,
