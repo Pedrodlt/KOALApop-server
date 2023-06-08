@@ -32,11 +32,11 @@ const auctionProduct = (req, res, next) => {
 
     const { product_id } = req.params
     const { bid_id } = req.body;
-    // const { _id: user_id } = req.payload
     console.log(product_id, bid_id)
 
     Product
         .findByIdAndUpdate(product_id, { $push: { bids: bid_id } }, { new: true })
+        .populate('owner')
         .then(response => {
             res.json(response)
         })

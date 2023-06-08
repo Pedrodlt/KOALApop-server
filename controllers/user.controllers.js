@@ -27,12 +27,12 @@ const getOneUserFunds = (req, res, next) => {
 
 
     const { _id } = req.payload
-    const { bidData, initialFunds } = req.body
+    const { bidData, userFunds } = req.body
     const { content, owner } = bidData
 
-    let updatedFunds = initialFunds - content
+    let updatedFunds = userFunds - content
 
-    console.log(req.body)
+    console.log('------------------22222222222222-------------------------', userFunds, content)
 
     User
         .findByIdAndUpdate(_id, { funds: updatedFunds })
