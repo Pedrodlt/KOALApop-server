@@ -13,6 +13,7 @@ const getAllUsers = (req, res, next) => {
 // USER DETAIL
 const getOneUser = (req, res, next) => {
 
+
     const { user_id } = req.params
 
     User
@@ -22,12 +23,33 @@ const getOneUser = (req, res, next) => {
         .catch(err => next(err))
 }
 
+const getOneUserFunds = (req, res, next) => {
+
+
+    const { _id } = req.payload
+    const { bidData, initialFunds } = req.body
+    const { content, owner } = bidData
+
+    let updatedFunds = initialFunds - content
+
+    console.log(req.body)
+
+    User
+        .findByIdAndUpdate(_id, { funds: updatedFunds })
+        .then(response => res.json(response))
+        .catch(err => next(err))
+
+}
+
+
+
 
 // USER EDIT
 const editUser = (req, res, next) => {
 
     const { user_id } = req.params
-    const { username, email, avatar, funds } = req.body // OJO AVATAR
+    let { username, email, avatar, funds, content: newFund } = req.body // OJO AVATAR
+
 
     User
         .findByIdAndUpdate(user_id, { username, email, avatar, funds })
@@ -63,5 +85,6 @@ module.exports = {
     getAllUsers,
     getOneUser,
     editUser,
-    deleteUser
+    deleteUser,
+    getOneUserFunds
 }
