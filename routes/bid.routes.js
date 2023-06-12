@@ -6,6 +6,5 @@ const { showBids, saveBid, auctionProduct } = require("../controllers/bid.contro
 router.get("/showBids", showBids)
 router.post("/saveBid", /* isAuthenticated, */ saveBid)
 router.put("/:product_id/auctionProduct",/*  isAuthenticated, */ auctionProduct)
-// router.delete("/deleteProduct/:product_id", deleteProduct)
 
 module.exports = router

@@ -21,10 +21,6 @@ router.post('/images', uploaderMiddleware.array('imagesData'), (req, res) => {
     const urls = req.files.map(file => file.path)
 
     res.json({ cloudinary_urls: urls })
-
-    // console.log('LAS FILES', req.files)
-
-    // res.json({ cloudinary_url: req.files.path })
 })
 
 

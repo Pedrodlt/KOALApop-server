@@ -5,14 +5,12 @@ const getAllUsers = (req, res, next) => {
 
     User
         .find()
-        // TODO: SELECT 
         .then(response => res.json(response))
         .catch(err => next(err))
 }
 
 // USER DETAIL
 const getOneUser = (req, res, next) => {
-
 
     const { user_id } = req.params
 
@@ -24,7 +22,6 @@ const getOneUser = (req, res, next) => {
 }
 
 const getOneUserFunds = (req, res, next) => {
-
 
     const { _id } = req.payload
     const { bidData, userFunds } = req.body
@@ -41,33 +38,17 @@ const getOneUserFunds = (req, res, next) => {
 
 }
 
-
-
-
 // USER EDIT
 const editUser = (req, res, next) => {
 
     const { user_id } = req.params
     let { username, email, avatar, funds, content: newFund } = req.body // OJO AVATAR
 
-
     User
         .findByIdAndUpdate(user_id, { username, email, avatar, funds })
         .then(response => res.json(response))
         .catch(err => next(err))
 
-    // if (req.file) {
-    //     const { path: avatar } = req.file
-    //     User
-    //         .findByIdAndUpdate(user_id, { username, email, avatar })
-    //         .then(response => res.json(response))
-    //         .catch(err => next(err))
-    // } else {
-    //     User
-    //         .findByIdAndUpdate(user_id, { username, email, })
-    //         .then(response => res.json(response))
-    //         .catch(err => next(err))
-    // }
 }
 
 // USER DELETE

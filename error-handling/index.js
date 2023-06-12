@@ -15,12 +15,5 @@ module.exports = (app) => {
       res.status(409).json({ errorMessages: ['Value duplicated, already in the database'] })
     }
 
-    // if (!res.headersSent) {
-    //   res
-    //     .status(500)
-    //     .json({
-    //       message: "Internal server error. Check the server console",
-    //     });
-    // }
   });
 };
